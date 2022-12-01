@@ -26,6 +26,17 @@ with open(filename, 'r') as f:
             sum = 0
             continue
 
+# Sort array from largest to smallest
+elfCalories.sort(reverse = True)
 
-print(max(elfCalories))
+# Extract the top 3 calories and sum
+top3 = elfCalories[:3]
+topSum = 0
+for cal in top3:
+    topSum += cal
+
+# Display results
+print(f'Maximum individual calories: {max(elfCalories)}')
+print(f'Sum of Top 3 calories: {topSum}')
+
 

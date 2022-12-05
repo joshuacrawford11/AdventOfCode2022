@@ -3,6 +3,8 @@ filename = "./Inputs/Day3Input.txt"
 
 # Initialise sum
 prioritySum = 0
+groupSum = 0
+linecount = 0
 
 # Begin read in
 with open(filename, 'r') as f:
@@ -36,5 +38,32 @@ with open(filename, 'r') as f:
                     # Add to sum
                     prioritySum += priority
 
+# Begin read in
+with open(filename, 'r') as f:
+
+    for line in f:
+        strpln = line.rstrip()
+
+        if len(strpln) > 0:
+
+            # Only read in groups on multiples of 3
+            elf1 = strpln
+            elf2 = f.readline().rstrip()
+            elf3 = f.readline().rstrip()
+
+            # Find matching item between all 3
+            groupItem = list(set(elf1).intersection(set(elf2).intersection(elf3)))[0]
+
+            if groupItem.isupper():
+                # ASCII code for letter
+                priority = ord(groupItem) - 38
+            
+            elif groupItem.islower():
+                # ASCII code for letter
+                priority = ord(groupItem) - 96
+
+            groupSum += priority
+
 # Return priority sum
 print(f"Total sum: {prioritySum}")
+print(f"Group sum: {groupSum}")
